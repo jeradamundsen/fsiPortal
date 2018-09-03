@@ -3,10 +3,18 @@ import React from 'react'
 const Landing = ()=>{
   return(
     <div style={{textAlign: 'center'}}>
-      <h1>
-        FSI Opertunity Registration
-      </h1>
-      Register An Opportunity
+      <h3>
+        FSI Project Registration Portal
+      </h3>
+      <div className="">
+        <p>
+          Welcome to the Project Registratin Portal. From here you can report a current project check if its
+          registered and find a list of all current projects.
+        </p>
+      
+
+      </div>
+
     </div>
   )
 }

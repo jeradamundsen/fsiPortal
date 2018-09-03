@@ -13,3 +13,6 @@ const store = createStore( reducers, {}, applyMiddleware(reduxThunk))
 ReactDOM.render(
   <Provider store={store}><App/></Provider>,
   document.querySelector('#root'))
+
+console.log('INSIGHTLY KEY IS', process.env.REACT_APP_INSIGHTLY_PUBLIC_KEY)
+console.log('environment is', process.env.NODE_ENV)

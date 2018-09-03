@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Payments from './Payments'
 
 class Header extends Component {
   renderContent(){
@@ -9,15 +11,26 @@ class Header extends Component {
       case false:
         return <li><a href="/auth/google">Login With Google</a></li>;
       default:
-        return <li><a href="/api/logout">Logout</a></li>;
+        return [
+          <li key="1"><Payments/></li>,
+          <li key="3" style={{margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
+          <li key="2"><a href="/api/logout">Logout</a></li>,
+          <li key="3">Register Project</li>,
+          <li key="5" style={{margin: '0 10px'}}>View registered Projects</li>
+        ]
     }
   }
   render(){
 
     return(
-      <nav>
+      <nav href="/">
     <div className="nav-wrapper">
-      <a className="left brand-logo">FSI Partner Portal</a>
+      <Link
+        to={this.props.auth ? '/surveys' : '/'}
+         className="left brand-logo"
+         >
+           FSI Partner Portal</Link>
+
       <ul className="right">
         {this.renderContent()}
       </ul>
@@ -27,7 +40,7 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return { auth: state.auth }
+function mapStateToProps({auth}){
+  return { auth }
 }
 export default connect(mapStateToProps)(Header);
